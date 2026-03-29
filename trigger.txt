@@ -1,1 +1,2 @@
 trigger new workflow
+trigger deploy after space creation
