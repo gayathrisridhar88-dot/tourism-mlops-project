@@ -1,4 +1,3 @@
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from huggingface_hub import upload_file
@@ -8,8 +7,7 @@ HF_TOKEN = os.getenv("HF_TOKEN")
 
 df = pd.read_csv("tourism_project/data/tourism.csv")
 
-# Drop unnecessary columns
-df = df.drop(["CustomerID", "Unnamed: 0"], axis=1, errors='ignore')
+df = df.drop(["CustomerID", "Unnamed: 0"], axis=1, errors="ignore")
 
 train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
 
@@ -19,7 +17,7 @@ test_df.to_csv("test.csv", index=False)
 upload_file(
     path_or_fileobj="train.csv",
     path_in_repo="train.csv",
-    repo_id="gayathri1909/tourism-data",   # ✅ FIXED
+    repo_id="gayathri1909/tourism.csv",
     repo_type="dataset",
     token=HF_TOKEN
 )
@@ -27,7 +25,7 @@ upload_file(
 upload_file(
     path_or_fileobj="test.csv",
     path_in_repo="test.csv",
-    repo_id="gayathri1909/tourism-data",   # ✅ FIXED
+    repo_id="gayathri1909/tourism.csv",
     repo_type="dataset",
     token=HF_TOKEN
 )
