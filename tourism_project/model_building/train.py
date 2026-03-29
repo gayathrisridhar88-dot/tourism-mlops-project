@@ -8,9 +8,8 @@ import os
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 
-# ✅ IMPORTANT FIX: files come from HF step, not local folder
-train_df = pd.read_csv("train.csv")
-test_df = pd.read_csv("test.csv")
+train_df = pd.read_csv("https://huggingface.co/datasets/gayathri1909/tourism.csv/resolve/main/train.csv")
+test_df = pd.read_csv("https://huggingface.co/datasets/gayathri1909/tourism.csv/resolve/main/test.csv")
 
 X_train = train_df.drop("ProdTaken", axis=1)
 y_train = train_df["ProdTaken"]
