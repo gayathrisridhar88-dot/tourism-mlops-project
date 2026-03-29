@@ -8,8 +8,9 @@ import os
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 
-train_df = pd.read_csv("tourism_project/data/train.csv")
-test_df = pd.read_csv("tourism_project/data/test.csv")
+# ✅ IMPORTANT FIX: files come from HF step, not local folder
+train_df = pd.read_csv("train.csv")
+test_df = pd.read_csv("test.csv")
 
 X_train = train_df.drop("ProdTaken", axis=1)
 y_train = train_df["ProdTaken"]
@@ -33,9 +34,9 @@ print("Accuracy:", acc)
 joblib.dump(model, "best_model.pkl")
 
 upload_file(
-    "best_model.pkl",
-    "best_model.pkl",
-    "gayathri1909/tourism-model",
+    path_or_fileobj="best_model.pkl",
+    path_in_repo="best_model.pkl",
+    repo_id="gayathri1909/tourism-model",
     repo_type="model",
     token=HF_TOKEN
 )

@@ -16,7 +16,20 @@ train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
 train_df.to_csv("train.csv", index=False)
 test_df.to_csv("test.csv", index=False)
 
-upload_file("train.csv", "train.csv", "gayathri1909/tourism.csv", repo_type="dataset", token=HF_TOKEN)
-upload_file("test.csv", "test.csv", "gayathri1909/tourism.csv", repo_type="dataset", token=HF_TOKEN)
+upload_file(
+    path_or_fileobj="train.csv",
+    path_in_repo="train.csv",
+    repo_id="gayathri1909/tourism-data",   # ✅ FIXED
+    repo_type="dataset",
+    token=HF_TOKEN
+)
+
+upload_file(
+    path_or_fileobj="test.csv",
+    path_in_repo="test.csv",
+    repo_id="gayathri1909/tourism-data",   # ✅ FIXED
+    repo_type="dataset",
+    token=HF_TOKEN
+)
 
 print("Data prep completed")
